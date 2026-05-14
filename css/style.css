@@ -196,6 +196,14 @@ body {
    CONTACT MODAL
 ========================= */
 
+#form-result {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #003449;
+    min-height: 20px;
+}
+
+
 .contact-modal {
     position: fixed;
     inset: 0;
@@ -328,7 +336,7 @@ section article {
 
 
 .highlight {
-    background: linear-gradient(transparent 1%,#f8db4b 20%);
+    background: linear-gradient(transparent 0%,#d0d8df 7%);
     border-radius: 4px;
     padding: 0 4px;
 }

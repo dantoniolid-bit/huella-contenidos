@@ -422,3 +422,56 @@ pdfButtons.forEach(btn => {
 
 pdfOverlay.addEventListener("click", closePDFModal);
 pdfClose.addEventListener("click", closePDFModal);
+
+
+
+
+// ===============================
+// CONTACT FORM AJAX SUBMIT
+// ===============================
+
+const contactForm = document.getElementById("contact-form");
+const formResult = document.getElementById("form-result");
+
+contactForm.addEventListener("submit", async function (e) {
+
+    e.preventDefault();
+
+    formResult.textContent = "Enviando mensaje...";
+
+    const formData = new FormData(contactForm);
+
+    try {
+
+        const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+
+            formResult.textContent = "Mensaje enviado correctamente.";
+
+            contactForm.reset();
+
+            // optional auto-close after 2 sec
+            setTimeout(() => {
+                formResult.textContent = "";
+                closeContact();
+            }, 2000);
+
+        } else {
+
+            formResult.textContent = "Hubo un problema. Intente nuevamente.";
+
+        }
+
+    } catch (error) {
+
+        formResult.textContent = "Error de conexión.";
+
+    }
+
+});

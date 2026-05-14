@@ -324,12 +324,18 @@
 
                 <h2>Contacto</h2>
 
-                <form action="https://api.web3forms.com/submit" method="POST">
-                <input type="hidden" name="access_key" value="a121b776-e349-4da2-bb5a-84c26d9628f0">
-                <input type="text" name="name" placeholder="Nombre" required>
-                <input type="email" name="email" placeholder="E-mail" required>
-                <textarea name="message" placeholder="Mensaje" required></textarea>
-                <button type="submit">Enviar</button>
+                <form id="contact-form">
+                    <input type="hidden" name="access_key" value="a121b776-e349-4da2-bb5a-84c26d9628f0">
+
+                    <input type="text" name="name" placeholder="Nombre" required>
+
+                    <input type="email" name="email" placeholder="E-mail" required>
+
+                    <textarea name="message" placeholder="Mensaje" required></textarea>
+
+                    <button type="submit">Enviar</button>
+
+                    <p id="form-result"></p>
                 </form>
                 
             </div>
