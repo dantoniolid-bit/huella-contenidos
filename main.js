@@ -229,6 +229,16 @@ window.addEventListener("touchend", (e) => {
 
 // HARD BLOCK native arrow scrolling
 window.addEventListener("keydown", (e) => {
+
+    // allow typing inside form fields
+    const tag = document.activeElement.tagName;
+
+    const isTyping =
+        tag === "INPUT" ||
+        tag === "TEXTAREA";
+
+    if (isTyping) return;
+
     if (
         e.key === "ArrowUp" ||
         e.key === "ArrowDown" ||
@@ -238,6 +248,7 @@ window.addEventListener("keydown", (e) => {
     ) {
         e.preventDefault();
     }
+
 }, { passive: false });
 
 
@@ -256,7 +267,14 @@ window.addEventListener("keydown", (e) => {
     if (isAnimating) return;
 
     if (sideMenu.classList.contains("open")) return;
-    if (contactModal.classList.contains("open")) return;
+
+    const tag = document.activeElement.tagName;
+
+    const isTyping =
+        tag === "INPUT" ||
+        tag === "TEXTAREA";
+
+    if (isTyping) return;
 
     if (e.key === "ArrowDown" || e.key === " ") {
         lastKeyTime = now;
