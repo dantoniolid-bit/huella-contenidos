@@ -176,35 +176,55 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 
 });
 // ===============================
-// SCROLL GLIDE MOBILE
+// MOBILE FIXED SECTION SWIPE
 // ===============================
 
-
 let touchStartY = 0;
+let touchEndY = 0;
+let isTouchMoving = false;
 
-window.addEventListener("touchstart", e => {
-    touchStartY = e.touches[0].clientY;
-});
+const SWIPE_THRESHOLD = 60;
 
-window.addEventListener("touchend", e => {
+window.addEventListener("touchstart", (e) => {
 
     if (isAnimating) return;
 
-    let touchEndY = e.changedTouches[0].clientY;
-    let diff = touchStartY - touchEndY;
+    touchStartY = e.touches[0].clientY;
+    isTouchMoving = true;
 
-    if (Math.abs(diff) < 50) return;
+}, { passive: true });
 
+window.addEventListener("touchmove", (e) => {
+
+    if (!isTouchMoving) return;
+
+    // HARD BLOCK native mobile scrolling
+    e.preventDefault();
+
+}, { passive: false });
+
+window.addEventListener("touchend", (e) => {
+
+    if (!isTouchMoving) return;
+    if (isAnimating) return;
+
+    touchEndY = e.changedTouches[0].clientY;
+
+    const diff = touchStartY - touchEndY;
+
+    isTouchMoving = false;
+
+    // ignore tiny accidental movements
+    if (Math.abs(diff) < SWIPE_THRESHOLD) return;
+
+    // ONE section only
     if (diff > 0) {
         goToSection(currentSection + 1);
     } else {
         goToSection(currentSection - 1);
     }
 
-    if (scrollTimeout) return;
-
-});
-
+}, { passive: true });
 
 
 // HARD BLOCK native arrow scrolling
@@ -266,10 +286,19 @@ const nextBtn = document.querySelector(".carousel-btn.next");
 
 let currentSlide = 0;
 const totalSlides = cards.length;
+updateCarousel();
 
 function updateCarousel() {
 
-    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    cards.forEach((card, index) => {
+
+        if (index === currentSlide) {
+            card.classList.add("active");
+        } else {
+            card.classList.remove("active");
+        }
+
+    });
 
 }
 
@@ -322,21 +351,21 @@ const pdfData = {
     autor: {
         title: "Derecho de autor",
         files: [
-            { name: "Autoedicion oportunidades y desafios.", url: "pdfs/Derecho de autor/01 Autoedicion oportunidades y desafios.pdf" },
+            { name: "Autoedición oportunidades y desafíos.", url: "pdfs/Derecho de autor/01 Autoedición oportunidades y desafíos.pdf" },
             { name: "Derecho de autor e inteligencia artificial.", url: "pdfs/Derecho de autor/01 Derecho de autor e inteligencia artificial.pdf" },
             { name: "El derecho de autor de los creadores digitales de contenidos.", url: "pdfs/Derecho de autor/01 El derecho de autor de los creadores digitales de contenidos.pdf" },
-            { name: "El plagio uso indebido de los contenidos de otros.", url: "pdfs/Derecho de autor/01 El plagio uso indebido de los contenidos de otros.pdf" },
-            { name: "El respeto de la propiedad intelectual. De que estamos hablando.", url: "pdfs/Derecho de autor/01 El respeto de la propiedad intelectual. De que estamos hablando.pdf" },
-            { name: "La delgada linea entre similitud y plagio.", url: "pdfs/Derecho de autor/01 Plagio malas practicas y conciencia publica.pdf" },
-            { name: "Plagio malas practicas y conciencia publica.", url: "pdfs/Derecho de autor/01 El plagio uso indebido de los contenidos de otros.pdf" },
-            { name: "Revistas depredadoras. Otro tentaculo de las malas practicas.", url: "pdfs/Derecho de autor/01 Revistas depredadoras. Otro tentaculo de las malas practicas.pdf" },
+            { name: "El plagio. Uso indebido de los contenidos de otros.", url: "pdfs/Derecho de autor/01 El plagio. Uso indebido de los contenidos de otros.pdf" },
+            { name: "El respeto de la propiedad intelectual. De qué estamos hablando.", url: "pdfs/Derecho de autor/01 El respeto de la propiedad intelectual. De qué estamos hablando.pdf" },
+            { name: "La delgada línea entre similitud y plagio.", url: "pdfs/Derecho de autor/01 La delgada línea entre similitud y plagio.pdf" },
+            { name: "Plagio, malas prácticas y conciencia pública.", url: "pdfs/Derecho de autor/01 Plagio, malas prácticas y conciencia pública.pdf" },
+            { name: "Revistas depredadoras. Otro tentáculo de las malas prácticas.", url: "pdfs/Derecho de autor/01 Revistas depredadoras. Otro tentáculo de las malas prácticas.pdf" },
         ]
     },
     carbono: {
         title: "Huella de carbono",
         files: [
             { name: "Cómo se mide la huella de carbono de un libro.", url: "pdfs/Huella de Carbono/02 Cómo se mide la huella de carbono de un libro.pdf" },
-            { name: "Infografia Libros y planeta. Cual es la verdadera huella de carbono.", url: "pdfs/Huella de Carbono/02 Infografia Libros y planeta. Cual es la verdadera huella de carbono.pdf" },
+            { name: "Infografía: Libros y planeta. Cuál es la verdadera huella de carbono.", url: "pdfs/Huella de Carbono/02 Infografia Libros y planeta. Cual es la verdadera huella de carbono.pdf" },
             { name: "La huella de carbono de las compras públicas de libros del MinCul.", url: "pdfs/Huella de Carbono/02 La huella de carbono de las compras públicas de libros del MinCul.pdf" },
             { name: "La huella de carbono editorial. Un tema urgente.", url: "pdfs/Huella de Carbono/02 La huella de carbono editorial. Un tema urgente.pdf" },
         ]
@@ -344,11 +373,11 @@ const pdfData = {
     tecnologia: {
         title: "Tecnología editorial",
         files: [
-            { name: "Contratos inteligentes y cesion de derechos de autor.", url: "pdfs/Tecnologia editorial/03 Contratos inteligentes y cesion de derechos de autor.pdf" },
+            { name: "Contratos inteligentes y cesión de derechos de autor.", url: "pdfs/Tecnologia editorial/03 Contratos inteligentes y cesión de derechos de autor.pdf" },
             { name: "El futuro de los tokens no fungibles.", url: "pdfs/Tecnologia editorial/03 El futuro de los tokens no fungibles.pdf" },
-            { name: "Inteligencia artificial. Y el derecho de autor.", url: "pdfs/Tecnologia editorial/03 Inteligencia artificial. Y el derecho de autor.pdf" },
+            { name: "Inteligencia artificial. ¿Y el derecho de autor?", url: "pdfs/Tecnologia editorial/03 Inteligencia artificial. Y el derecho de autor.pdf" },
             { name: "La responsabilidad editorial en la era de la desinformación.", url: "pdfs/Tecnologia editorial/03 La responsabilidad editorial en la era de la desinformación.pdf" },
-            { name: "Tokens no fungibles. Que son y cual es su impacto en los derechos de autor.", url: "pdfs/Tecnologia editorial/03 Tokens no fungibles. Que son y cual es su impacto en los derechos de autor.pdf" },
+            { name: "Tokens no fungibles. Qué son y cuál es su impacto en los derechos de autor.", url: "pdfs/Tecnologia editorial/03 Tokens no fungibles. Qué son y cuál es su impacto en los derechos de autor.pdf" },
         ]
     }
 };

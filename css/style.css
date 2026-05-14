@@ -326,6 +326,14 @@ section article {
     max-width: 520px;
 }
 
+
+.highlight {
+    background: linear-gradient(transparent 1%,#f8db4b 20%);
+    border-radius: 4px;
+    padding: 0 4px;
+}
+
+
 /* =========================
    SUB_IMAGE BLOCK
 ========================= */
@@ -386,7 +394,6 @@ section article {
     font-size: 1rem;
     padding: 5px 5px 5px 5px;
     border-top: 1px solid #003449;
-
 }
 
 
@@ -498,12 +505,19 @@ section article {
     position: relative;
     width: 90%;
     max-width: 500px;
-    margin: 10vh auto;
+    margin: 20px auto;
     background: #bcc7d0;
     padding: 32px;
     color: #003449;
     border-radius: 12px;
     z-index: 1;
+}
+
+.contact-box,
+.pdf-box {
+    max-height: 85vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .pdf-close {
@@ -656,29 +670,48 @@ section article {
 .proyectos-carousel {
     position: relative;
     width: 90%;
-    margin-top: 40px;
     padding: 0 70px;
 }
 
 .carousel-viewport {
+    position: relative;
     width: 100%;
     overflow: hidden;
     border-radius: 10px;
+
+    display: flex;
+    align-items: center;
 }
 
 .carousel-track {
-    display: flex;
-    transition: transform 0.6s ease;
+    position: relative;
     width: 100%;
+    min-height: 500px;
+
+    display: flex;
+    align-items: center;
 }
 
 .proyecto-card {
-    min-width: 100%;
+    position: absolute;
+    inset: 0;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     padding: 40px 30px;
     gap: 20px;
+
+    opacity: 0;
+    pointer-events: none;
+
+
+}
+
+.proyecto-card.active {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 /* text grows naturally */
@@ -743,3 +776,725 @@ section article {
     right: 0;
 }
 
+
+
+
+
+
+/* ==================================================
+   MOBILE LANDSCAPE
+================================================== */
+
+@media (max-width: 900px) and (orientation: landscape) {
+
+
+    html,
+    body {
+        overscroll-behavior: none;
+        touch-action: none;
+    }
+
+    .contact-box,
+    .pdf-box {
+        touch-action: auto;
+        overflow-y: auto;
+    }
+
+
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    .navbar {
+        height: 56px;
+    }
+
+    .logo img {
+        width: 80px;
+    }
+
+    /* =========================
+       GLOBAL LAYOUT
+    ========================= */
+
+    section {
+        min-height: 90vh;
+    }
+
+    section article {
+        padding: 50px 4vw 20px 15vw;
+        align-items: center;
+    }
+
+    /* =========================
+       TEXT
+    ========================= */
+
+    .text {
+        max-width: 380px;
+        margin-right: 16px;
+    }
+
+    .text h1 {
+        font-size: 1.5rem;
+        line-height: 1.08;
+        margin-bottom: 10px;
+    }
+
+    .text h2 {
+        font-size: 1rem;
+        line-height: 1.08;
+        margin-bottom: 10px;
+    }
+
+    .text p {
+        font-size: 0.65rem;
+        line-height: 1.45;
+    }
+
+    /* =========================
+       BUTTONS
+    ========================= */
+
+    .contact-btn {
+        font-size: 1rem;
+        padding: 12px 14px;
+        border-radius: 14px;
+    }
+
+    .contact-btn--menu {
+        margin-top: 14px;
+    }
+
+    /* =========================
+       MAIN IMAGE
+    ========================= */
+
+    .image img {
+        width: 30vw;
+    }
+
+    /* =========================
+       SUB IMAGE
+    ========================= */
+
+    .sub_image {
+        padding-top: 16px;
+    }
+
+    .sub_image figure {
+        padding: 8px 14px;
+        border-radius: 18px;
+    }
+
+    .sub_image img {
+        width: 30vw;
+    }
+
+    /* =========================
+       PDF SECTION
+    ========================= */
+
+    .pdfs {
+        width: 31vw;
+        gap: 6px;
+        margin-top: 6px;
+    }
+
+    .pdf-icon {
+        padding: 10px;
+        gap: 10px;
+        border-radius: 14px;
+    }
+
+    .pdf-icon img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .pdf-text h3 {
+        font-size: 0.70rem;
+        margin-bottom: 2px;
+    }
+
+    .pdf-text p {
+        font-size: 0.65rem;
+        line-height: 1.25;
+    }
+
+    .pdf-box {
+    margin: 2vh auto;
+    }
+
+    .pdf-box h2 {
+        font-size: 0.75rem;
+    }
+
+    .pdf-list a {
+        font-size: 0.35rem;
+        padding: 5px;
+    }
+
+
+    .pdf-list {
+    gap: 5px;
+    }
+
+    /* =========================
+       SPECIFICATION
+    ========================= */
+
+    .specification {
+        margin-top: 16px;
+    }
+
+    .specification p {
+        font-size: 0.6rem;
+        line-height: 1.3;
+    }
+
+    /* =========================
+       SIDE MENU
+    ========================= */
+
+    .side-menu {
+        width: 260px;
+        padding-top: 80px;
+    }
+
+    .side-menu li {
+        margin-bottom: 14px;
+    }
+
+    .side-menu a {
+        font-size: 1rem;
+    }
+
+    /* =========================
+       PROYECTOS
+    ========================= */
+
+
+    .proyectos h2 {
+        margin-bottom: 0px;
+    }
+
+    .proyectos-carousel {
+        width: 100%;
+        padding: 0 30px;
+    }
+
+    .carousel-track {
+        min-height: 200px;
+    }
+
+    .proyecto-card {
+        padding: 10px;
+        gap: 16px;
+    }
+
+    .cardtext {
+        max-width: 520px;
+    }
+
+    .cardtext h1 {
+        font-size: 1.5rem;
+        margin-bottom: 6px;
+    }
+
+    .cardtext p {
+        font-size: 0.4rem;
+        line-height: 1.4;
+    }
+
+    .cardimage img {
+        width: 10vw;
+    }
+
+    .carousel-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+    }
+
+    /* =========================
+    CONTACT SECTION
+    ========================= */
+
+    .contacto {
+        height: 80vh;
+
+        display: flex;
+        flex-direction: column;
+
+        justify-content: space-between;
+
+        overflow: hidden;
+    }
+
+
+    .contacto h1 {
+        font-size: 1.2rem;
+    }
+
+    .contacto article {
+        flex: 1;
+
+        margin-top: 20px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        min-height: 0;
+    }
+
+
+    .contacto .text {
+        max-width: 500px;
+    }
+
+
+    .contact-box {
+        height: 75vh;
+        margin: 20px auto;
+        background: #bcc7d0;
+        padding: 20px;
+        color: #003449;
+        border-radius: 12px;
+        z-index: 1;
+    }
+
+    .contact-box h2 {
+    font-size: 1.2rem;
+    }
+
+    .contact-box form {
+    gap: 5px;
+    }
+
+    .contact-box textarea {
+    min-height: 50px;
+    }
+
+
+        /* =========================
+        FOOTER
+        ========================= */
+
+        .site-footer {
+            padding: 20px 8vw 30px 8vw;
+            flex-shrink: 0;
+        }
+
+        .footer-col {
+            font-size: 0.5rem;
+        }
+
+        .footer-bottom {
+            font-size: 0.5rem;
+            padding-top: 5px;
+        }
+
+        .social-icons {
+            gap: 10px;
+            padding: 0;
+        }
+
+        .social-icons img {
+            width: 25px;
+        }
+
+    }
+
+
+
+/* ==================================================
+   MOBILE PORTRAIT
+================================================== */
+
+@media (max-width: 600px) {
+
+
+
+    html,
+    body {
+        overscroll-behavior: none;
+        touch-action: none;
+    }
+
+    .contact-box,
+    .pdf-box {
+        touch-action: auto;
+        overflow-y: auto;
+    }
+
+    /* =========================
+       GLOBAL LAYOUT
+    ========================= */
+
+    section {
+        min-height: 90vh;
+        padding: 0;
+
+        display: flex;
+        align-items: center;
+
+        overflow: hidden;
+    }
+
+    section article {
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+
+        gap: 14px;
+
+        padding:
+            80px   /* top navbar space */
+            7vw
+            24px;
+    }
+
+    .inicio article,
+    .quehacemos article,
+    .quehacemosposible article {
+        flex-direction: column-reverse;
+        gap: 40px;
+    }
+
+    .comopensamos article {
+        gap: 50px;
+    }
+
+    /* =========================
+    TRUE VERTICAL CENTERING
+    ========================= */
+
+    section article {
+        justify-content: center;
+        align-items: center;
+
+        padding-top: 80px;
+        padding-bottom: 40px;
+    }
+
+    /* remove leftover horizontal-layout spacing */
+    .text {
+        margin: 0;
+    }
+
+    /* make image blocks stop reserving weird space */
+    .image,
+    .pdfs,
+    .sub_image {
+        flex: 0 0 auto;
+    }
+
+    /* prevent sections from sticking to the top */
+    .text,
+    .image,
+    .pdfs {
+        justify-content: center;
+    }
+
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    .navbar {
+        height: 64px;
+    }
+
+    .nav-inner {
+        padding: 0 16px;
+    }
+
+    .logo img {
+        width: 120px;
+    }
+
+    .menu-toggle {
+        width: 24px;
+        height: 18px;
+    }
+
+    .menu-toggle span {
+        height: 3px;
+    }
+
+
+    /* =========================
+       TEXT
+    ========================= */
+
+    .text {
+        width: 100%;
+        max-width: 100%;
+
+        margin-right: 0;
+
+        text-align: left;
+    }
+
+    .text h1 {
+        font-size: 2rem;
+        line-height: 1.05;
+        margin-bottom: 10px;
+    }
+
+    .text h2 {
+        font-size: 1.6rem;
+        line-height: 1.05;
+        margin-bottom: 10px;
+    }
+
+    .text p {
+        font-size: 1rem;
+        line-height: 1.45;
+        max-width: 100%;
+    }
+
+
+    /* =========================
+       BUTTONS
+    ========================= */
+
+    .contact-btn {
+        font-size: 1.2rem;
+
+        padding: 20px;
+
+        border-radius: 25px;
+    }
+
+    .contact-btn--menu {
+        margin-top: 12px;
+    }
+
+
+    /* =========================
+       MAIN IMAGES
+    ========================= */
+
+    .image {
+        width: 100%;
+    }
+
+    .image figure {
+        max-width: 100%;
+    }
+
+    .image img {
+        width: 85vw;
+        object-fit: contain;
+    }
+
+
+    /* =========================
+       SUB IMAGE
+    ========================= */
+
+    .sub_image {
+        padding-top: 14px;
+    }
+
+    .sub_image figure {
+        padding: 10px 14px;
+        border-radius: 18px;
+    }
+
+    .sub_image img {
+        width: 75vw;
+        max-width: 400px;
+    }
+
+
+    /* =========================
+       SPECIFICATION
+    ========================= */
+
+    .specification {
+        margin-top: 14px;
+    }
+
+    .specification p {
+        font-size: 0.68rem;
+        line-height: 1.3;
+        border-top: 1px solid #5f8290;
+        color: #5f8290;
+    }
+
+
+    /* =========================
+       PDF SECTION
+    ========================= */
+
+    .pdfs {
+        width: 100%;
+
+        gap: 10px;
+
+        margin-top: 10px;
+    }
+
+    .pdf-icon {
+        gap: 10px;
+
+        padding: 12px;
+
+        border-radius: 14px;
+    }
+
+    .pdf-icon img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .pdf-text h3 {
+        font-size: 1rem;
+        margin-bottom: 2px;
+    }
+
+    .pdf-text p {
+        font-size: 0.75rem;
+        line-height: 1.3;
+    }
+
+    .pdf-list a {
+        font-size: .8rem;
+        padding: 6px;
+    }
+    /* =========================
+       SIDE MENU
+    ========================= */
+
+    .side-menu {
+        width: 100%;
+        padding-top: 80px;
+    }
+
+    .side-menu li {
+        margin-bottom: 16px;
+    }
+
+    .side-menu a {
+        font-size: 1.5rem;
+    }
+
+
+    /* =========================
+       PROYECTOS
+    ========================= */
+
+    .proyectos article {
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .proyectos-carousel {
+        width: 100%;
+
+        margin-top: 0;
+
+        padding: 10px 50px;
+    }
+
+    .proyecto-card {
+        flex-direction: column-reverse;
+
+        align-items: center;
+
+        gap: 10px;
+
+        padding: 0;
+    }
+
+    .cardtext {
+        max-width: 100%;
+        flex: 0;
+    }
+
+    .cardtext h1 {
+        margin-bottom: 6px;
+    }
+
+    .cardtext p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        
+    }
+
+    .cardimage img {
+        width: 30vw;
+    }
+
+    .carousel-btn {
+        width: 30px;
+        height: 30px;
+
+        font-size: 18px;
+    }
+
+
+    /* =========================
+    CONTACT SECTION
+    ========================= */
+
+    .contacto {
+        min-height: 90vh;
+
+        display: flex;
+        flex-direction: column;
+
+        justify-content: space-between;
+    }
+
+    .contacto article {
+        flex: 1;
+
+        margin-top: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding:
+            80px
+            7vw
+            40px;
+    }
+
+    .contacto .text {
+        max-width: 500px;
+    }
+
+     /* =========================
+       FOOTER
+    ========================= */
+
+    .site-footer {
+        padding: 30px 8vw 30px;
+    }
+
+    .footer-top {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .social-icons {
+        padding: 0;
+        gap: 20px;
+    }
+
+    .social-icons img {
+        width: 40px;
+    }
+
+}
