@@ -375,6 +375,7 @@ const pdfData = {
             { name: "El plagio. Uso indebido de los contenidos de otros.", url: "pdfs/Derecho de autor/01 El plagio. Uso indebido de los contenidos de otros.pdf" },
             { name: "El respeto de la propiedad intelectual. De qué estamos hablando.", url: "pdfs/Derecho de autor/01 El respeto de la propiedad intelectual. De qué estamos hablando.pdf" },
             { name: "La delgada línea entre similitud y plagio.", url: "pdfs/Derecho de autor/01 La delgada línea entre similitud y plagio.pdf" },
+            { name: "La piratería también se enseña.", url: "pdfs/Derecho de autor/01 La piratería también se enseña.pdf" },
             { name: "Plagio, malas prácticas y conciencia pública.", url: "pdfs/Derecho de autor/01 Plagio, malas prácticas y conciencia pública.pdf" },
             { name: "Revistas depredadoras. Otro tentáculo de las malas prácticas.", url: "pdfs/Derecho de autor/01 Revistas depredadoras. Otro tentáculo de las malas prácticas.pdf" },
         ]
@@ -383,6 +384,7 @@ const pdfData = {
         title: "Huella de carbono",
         files: [
             { name: "Cómo se mide la huella de carbono de un libro.", url: "pdfs/Huella de Carbono/02 Cómo se mide la huella de carbono de un libro.pdf" },
+            { name: "¿De verdad nos preocupa nuestra huella de carbono?", url: "pdfs/Huella de Carbono/02 De verdad nos preocupa nuestra huella de carbono.pdf" },
             { name: "Infografía: Libros y planeta. Cuál es la verdadera huella de carbono.", url: "pdfs/Huella de Carbono/02 Infografia Libros y planeta. Cual es la verdadera huella de carbono.pdf" },
             { name: "La huella de carbono de las compras públicas de libros del MinCul.", url: "pdfs/Huella de Carbono/02 La huella de carbono de las compras públicas de libros del MinCul.pdf" },
             { name: "La huella de carbono editorial. Un tema urgente.", url: "pdfs/Huella de Carbono/02 La huella de carbono editorial. Un tema urgente.pdf" },
@@ -392,6 +394,7 @@ const pdfData = {
         title: "Tecnología editorial",
         files: [
             { name: "Contratos inteligentes y cesión de derechos de autor.", url: "pdfs/Tecnologia editorial/03 Contratos inteligentes y cesión de derechos de autor.pdf" },
+            { name: "Cuando el porcentaje se convierte en veredicto.", url: "pdfs/Tecnologia editorial/03 Cuando el porcentaje se convierte en veredicto.pdf" },
             { name: "El futuro de los tokens no fungibles.", url: "pdfs/Tecnologia editorial/03 El futuro de los tokens no fungibles.pdf" },
             { name: "Inteligencia artificial. ¿Y el derecho de autor?", url: "pdfs/Tecnologia editorial/03 Inteligencia artificial. Y el derecho de autor.pdf" },
             { name: "La responsabilidad editorial en la era de la desinformación.", url: "pdfs/Tecnologia editorial/03 La responsabilidad editorial en la era de la desinformación.pdf" },
