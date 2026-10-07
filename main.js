@@ -59,6 +59,9 @@ contactClose.addEventListener('click', closeContact);
 
 
 
+
+
+
 // ===============================
 // SCROLL GLIDE
 // ===============================
@@ -443,6 +446,39 @@ pdfButtons.forEach(btn => {
 
 pdfOverlay.addEventListener("click", closePDFModal);
 pdfClose.addEventListener("click", closePDFModal);
+
+
+
+
+
+
+
+
+
+// ===============================
+// AUDIOLIBROS PDF
+// ===============================
+
+const audiolibrosBtn = document.querySelector(".escuchahuella-btn");
+
+audiolibrosBtn.addEventListener("click", () => {
+
+    window.open(
+        "pdfs/ESCUCHA HUELLA.pdf",
+        "_blank"
+    );
+
+});
+
+
+
+
+
+
+
+
+
+
 
 
 

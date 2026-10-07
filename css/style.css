@@ -192,6 +192,46 @@ body {
 }
 
 
+
+
+
+/* =========================
+   AUDIOLIBROS BUTTON
+========================= */
+
+.escuchahuella-btn {
+    background: #bcc7d0;
+    color: #003449;
+    border: none;
+    padding: 20px 20px;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.escuchahuella-btn:hover {
+    background: #003449;
+    color: white;
+}
+
+.escuchahuella-btn--menu {
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
 /* =========================
    CONTACT MODAL
 ========================= */
